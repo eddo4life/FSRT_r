@@ -11,6 +11,7 @@
 source("scripts/01_load_data.R")
 source("scripts/02_utils_stats.R")
 source("scripts/03_analyse_demographie.R")
+source("scripts/04_analyse_comportement.R")
 
 df <- load_students_data()
 
@@ -19,3 +20,8 @@ demographie <- analyse_demographie(df)
 
 print("Analyse démographique terminée.")
 print(demographie)
+
+# Analyse comportementale
+comportement <- analyse_comportement(df)
+print("Analyse comportement académique terminée.")
+print(comportement)
