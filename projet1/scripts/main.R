@@ -13,6 +13,7 @@ source("scripts/02_utils_stats.R")
 source("scripts/03_analyse_demographie.R")
 source("scripts/04_analyse_comportement.R")
 source("scripts/05_analyse_performance.R")
+source("scripts/06_analyse_evolution.R")
 
 df <- load_students_data()
 
@@ -32,3 +33,13 @@ perf <- analyse_performance(df)
 
 print("Analyse de performance académique terminée.")
 print(perf)
+
+# Analyse de l'évolution des performances entre S1 et S2
+resultats_evolution <- analyse_evolution(df)
+
+print(resultats_evolution$comparaison_moyennes)
+print(resultats_evolution$distribution_variations)
+print(resultats_evolution$progression_regression)
+
+View(resultats_evolution$top_10_progressions)
+View(resultats_evolution$top_10_regressions)
