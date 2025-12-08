@@ -18,6 +18,7 @@ source("scripts/07_analyse_evolution_matieres.R")
 source("scripts/08_analyse_par_filiere.R")
 source("scripts/09_analyse_par_genre.R")
 source("scripts/10_analyse_par_age.R")
+source("scripts/11_analyse_heures_etude.R")
 
 
 df <- load_students_data()
@@ -92,7 +93,7 @@ for (m in names(result_genre$matieres)) {
 
 # Analyse par âge
 result_age <- analyse_par_age(df)
-# print("Analyse par âge terminée.")
+print("Analyse par âge terminée.")
 
 # Comparaison globale par âge
 print(result_age$global)
@@ -102,3 +103,17 @@ for (m in names(result_age$matieres)) {
   cat("\n--- Matière :", m, "---\n")
   print(result_age$matieres[[m]])
 }
+
+# Impact des Absences
+result_heures <- analyse_heures_etude(df)
+print("Analyse de l'impact des heures d'etude terminee.")
+
+cat("\n=== Corrélation heures d'étude / moyenne générale S2 ===\n")
+print(result_heures$correlation)
+
+cat("\n=== Performance par tranche d'heures ===\n")
+print(result_heures$perfs_par_tranche)
+
+cat("\n=== Seuil optimal d'heures d'étude ===\n")
+print(result_heures$seuil_optimal)
+

@@ -7,7 +7,7 @@ analyse_par_age <- function(df) {
   # ----------------------------------------------------------
   # Créer des categories d'age
   # ----------------------------------------------------------
-  # Considerant la place -> jeunes 18-20, moyens 21-23, plus âgés 24-26
+  # Considerant la plage -> jeunes 18-20, moyens 21-23, plus âgés 24-26
   df$age_cat <- cut(
     df$age,
     breaks = c(17, 20, 23, 26),
