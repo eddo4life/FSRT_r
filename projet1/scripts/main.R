@@ -16,6 +16,7 @@ source("scripts/05_analyse_performance.R")
 source("scripts/06_analyse_evolution.R")
 source("scripts/07_analyse_evolution_matieres.R")
 source("scripts/08_analyse_par_filiere.R")
+source("scripts/09_analyse_par_genre.R")
 
 df <- load_students_data()
 
@@ -63,3 +64,27 @@ print(result_filiere$statistiques)
 print(result_filiere$comparaison_filiere)
 print(result_filiere$meilleure_filiere)
 print(result_filiere$taux_reussite)
+
+# Analyse par genre
+result_genre <- analyse_par_genre(df)
+print("Analyse par genre terminée.")
+
+cat("\n=== Comparaison des performances H/F ===\n")
+print(result_genre$global)
+
+cat("\n=== Différences par matière ===\n")
+for (m in names(result_genre$matieres)) {
+  cat("\n--- Matière :", m, "---\n")
+  print(result_genre$matieres[[m]])
+}
+
+cat("\n=== Évolution S1 → S2 par genre ===\n")
+cat("\n--- Évolution globale ---\n")
+print(result_genre$global[, c("genre", "evolution")])
+
+cat("\n--- Évolution par matière ---\n")
+for (m in names(result_genre$matieres)) {
+  cat("\nMatière :", m, "\n")
+  print(result_genre$matieres[[m]][, c("genre", "evolution")])
+}
+
