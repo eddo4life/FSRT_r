@@ -14,6 +14,7 @@ source("scripts/03_analyse_demographie.R")
 source("scripts/04_analyse_comportement.R")
 source("scripts/05_analyse_performance.R")
 source("scripts/06_analyse_evolution.R")
+source("scripts/07_analyse_evolution_matieres.R")
 
 df <- load_students_data()
 
@@ -36,6 +37,7 @@ print(perf)
 
 # Analyse de l'évolution des performances entre S1 et S2
 resultats_evolution <- analyse_evolution(df)
+print("Analyse de l'évolution des performances terminée.")
 
 print(resultats_evolution$comparaison_moyennes)
 print(resultats_evolution$distribution_variations)
@@ -43,3 +45,11 @@ print(resultats_evolution$progression_regression)
 
 View(resultats_evolution$top_10_progressions)
 View(resultats_evolution$top_10_regressions)
+
+# Analyse de l'évolution des performances par matière entre S1 et S2
+result_matieres <- analyse_evolution_matieres(df)
+print("Analyse de l'évolution des performances par matière terminée.")
+
+print(result_matieres$comparaison_moyennes)
+print(result_matieres$progression_regression)
+print(result_matieres$tests_statistiques)
