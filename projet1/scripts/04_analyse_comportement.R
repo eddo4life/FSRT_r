@@ -42,7 +42,6 @@ analyse_comportement <- function(df) {
     
     correlation_heure_abs_s2 = cor_s2,
     interpretation_s2 = interpret_correlation(cor_s2)
-    
   )
   
   return(list(

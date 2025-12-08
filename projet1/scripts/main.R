@@ -15,6 +15,7 @@ source("scripts/04_analyse_comportement.R")
 source("scripts/05_analyse_performance.R")
 source("scripts/06_analyse_evolution.R")
 source("scripts/07_analyse_evolution_matieres.R")
+source("scripts/08_analyse_par_filiere.R")
 
 df <- load_students_data()
 
@@ -53,3 +54,12 @@ print("Analyse de l'évolution des performances par matière terminée.")
 print(result_matieres$comparaison_moyennes)
 print(result_matieres$progression_regression)
 print(result_matieres$tests_statistiques)
+
+# Analyse par filière
+result_filiere <- analyse_par_filiere(df)
+print("Analyse par filière terminée.")
+
+print(result_filiere$statistiques)
+print(result_filiere$comparaison_filiere)
+print(result_filiere$meilleure_filiere)
+print(result_filiere$taux_reussite)
