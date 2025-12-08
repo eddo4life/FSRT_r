@@ -17,6 +17,8 @@ source("scripts/06_analyse_evolution.R")
 source("scripts/07_analyse_evolution_matieres.R")
 source("scripts/08_analyse_par_filiere.R")
 source("scripts/09_analyse_par_genre.R")
+source("scripts/10_analyse_par_age.R")
+
 
 df <- load_students_data()
 
@@ -88,3 +90,15 @@ for (m in names(result_genre$matieres)) {
   print(result_genre$matieres[[m]][, c("genre", "evolution")])
 }
 
+# Analyse par âge
+result_age <- analyse_par_age(df)
+# print("Analyse par âge terminée.")
+
+# Comparaison globale par âge
+print(result_age$global)
+
+# Comparaison par matière
+for (m in names(result_age$matieres)) {
+  cat("\n--- Matière :", m, "---\n")
+  print(result_age$matieres[[m]])
+}
