@@ -19,6 +19,7 @@ source("scripts/08_analyse_par_filiere.R")
 source("scripts/09_analyse_par_genre.R")
 source("scripts/10_analyse_par_age.R")
 source("scripts/11_analyse_heures_etude.R")
+source("scripts/12_visualisations.R")
 
 
 df <- load_students_data()
@@ -117,3 +118,21 @@ print(result_heures$perfs_par_tranche)
 cat("\n=== Seuil optimal d'heures d'étude ===\n")
 print(result_heures$seuil_optimal)
 
+
+# Visualisations (optionnel)
+
+graphs <- visualiser(df)
+
+# Afficher directement dans R
+print(graphs$histo_moyennes)
+print(graphs$boxplot_filiere)
+print(graphs$scatter_heures)
+print(graphs$evo_s1_s2)
+print(graphs$bar_tranche)
+
+# Sauvegarder
+ggsave("output/figures/histo_moyennes.png", plot = graphs$histo_moyennes, dpi = 300)
+ggsave("output/figures/boxplot_filiere.png", plot = graphs$boxplot_filiere, dpi = 300)
+ggsave("output/figures/scatter_heures.png", plot = graphs$scatter_heures, dpi = 300)
+ggsave("output/figures/evo_s1_s2.png", plot = graphs$evo_s1_s2, dpi = 300)
+ggsave("output/figures/bar_tranche.png", plot = graphs$bar_tranche, dpi = 300)
