@@ -1,12 +1,11 @@
-# ===================================================================================================
+# ==============================================================================================
 # PROJET FINAL 1 - ANALYSE DE PERFORMANCES ETUDIANTES
-# ===================================================================================================
+# ==============================================================================================
 # Auteur: Boaz Eddy Cadet THEODORIS
 # Date: 04 DECEMBRE 2025
-# Description: Vous êtes data analyst pour une université qui souhaite comprendre 
-#              les facteurs influençant la performance académique de ses étudiants. 
-#              L'université a collecté des données sur 200 étudiants sur deux semestres consécutifs.
-# ===================================================================================================
+# Description: Ce projet vise à analyser les performances académiques de 200 étudiants 
+#              sur deux semestres consécutifs.
+# ==============================================================================================
 
 source("scripts/01_load_data.R")
 source("scripts/02_utils_stats.R")
@@ -21,13 +20,20 @@ source("scripts/10_analyse_par_age.R")
 source("scripts/11_analyse_heures_etude.R")
 source("scripts/12_visualisations.R")
 
+print("Donnes importe avec succes.")
 
 df <- load_students_data()
+# Vérification
+#  str(df)
+#  summary(df)
+#  head(df)
+#  print("Fin de la verification des donnees.\n\n")
 
+#=============Analyse 1============
 # Analyse démographique
 demographie <- analyse_demographie(df)
 
-print("Analyse démographique terminée.")
+print("[Analyse démographique terminée.]\nAffichage des résultats :\n")
 print(demographie)
 
 # Analyse comportementale
@@ -119,11 +125,11 @@ cat("\n=== Seuil optimal d'heures d'étude ===\n")
 print(result_heures$seuil_optimal)
 
 
-# Visualisations (optionnel)
-
+# Visualisations
 graphs <- visualiser(df)
+print("Visualisations générees.")
 
-# Afficher directement dans R
+# Affichage des graphiques
 print(graphs$histo_moyennes)
 print(graphs$boxplot_filiere)
 print(graphs$scatter_heures)
@@ -136,3 +142,5 @@ ggsave("output/figures/boxplot_filiere.png", plot = graphs$boxplot_filiere, dpi 
 ggsave("output/figures/scatter_heures.png", plot = graphs$scatter_heures, dpi = 300)
 ggsave("output/figures/evo_s1_s2.png", plot = graphs$evo_s1_s2, dpi = 300)
 ggsave("output/figures/bar_tranche.png", plot = graphs$bar_tranche, dpi = 300)
+
+print("Graphiques sauvegardés dans le dossier output/figures.")
