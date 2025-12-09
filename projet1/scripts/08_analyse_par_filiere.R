@@ -1,5 +1,6 @@
-# Analyse par filiere
+library(broom)
 
+# Analyse par filiere
 analyse_par_filiere <- function(df) {
 
   # Verification que la filiere est bien un facteur
@@ -16,15 +17,16 @@ analyse_par_filiere <- function(df) {
       ecart_type_s2 = sd(moyenne_s2, na.rm = TRUE)
     )
 
-  # Comparaison des moyennes entre filieres
-  analyse_s1 <- aov(moyenne_s1 ~ filiere, data = df)
-  analyse_s2 <- aov(moyenne_s2 ~ filiere, data = df)
+    # Comparaison des moyennes entre filières
+    analyse_s1 <- aov(moyenne_s1 ~ filiere, data = df)
+    analyse_s2 <- aov(moyenne_s2 ~ filiere, data = df)
 
-  comparaison <- list(
-    analyse_s1 = summary(analyse_s1),
-    analyse_s2 = summary(analyse_s2),
+    # On nettoie les results avec broom
+    comparaison <- list(
+    analyse_s1 = tidy(analyse_s1),
+    analyse_s2 = tidy(analyse_s2),
     interpretation = "Si p < 0.05, alors les moyennes diffèrent significativement entre les filières."
-  )
+    )
 
   # Identification de la filiere la plus performante
 
