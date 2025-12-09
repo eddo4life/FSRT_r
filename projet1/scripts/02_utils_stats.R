@@ -17,3 +17,11 @@ count_percent <- function(x) {
     pourcentage = round(as.numeric(pct), 2)
   )
 }
+
+# Sauvegarder les donnees
+save_to_csv <- function(data, filename) {
+  filepath <- file.path("output", "tables", filename)
+
+  write.csv(data, filepath, row.names = FALSE)
+  cat("✓ ", filename, " créé\n")
+}
