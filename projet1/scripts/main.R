@@ -127,7 +127,7 @@ print("Analyse par âge terminée.")
 print(result_age$global)
 save_to_csv(result_age$global, "comparaison_age_global.csv")
 
-# Exporter les données par matière dans un seul fichier
+# Exportation des donnees age_matieres
 donnees_age_matieres <- do.call(rbind, lapply(names(result_age$matieres), function(m) {
   df_temp <- result_age$matieres[[m]]
   df_temp$matiere <- m
@@ -151,8 +151,8 @@ cat("\n=== Seuil optimal d'heures d'étude ===\n")
 print(result_heures$seuil_optimal)
 save_to_csv(result_heures$seuil_optimal, "seuil_optimal_heures.csv")
 
-# Message de confirmation
-cat("\n✓ Tous les tableaux ont été exportés dans le dossier 'output/tables/'\n")
+# Fin d'exportation
+cat("\nTous les tableaux ont été exportés dans le dossier 'output/tables/'\n")
 cat("Fichiers créés :\n")
 list.files("output/tables/", full.names = FALSE)
 

@@ -23,5 +23,5 @@ save_to_csv <- function(data, filename) {
   filepath <- file.path("output", "tables", filename)
 
   write.csv(data, filepath, row.names = FALSE)
-  cat("✓ ", filename, " créé\n")
+  cat("-- ", filename, " créé\n")
 }
